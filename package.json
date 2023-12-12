@@ -1,0 +1,24 @@
+{
+  "name": "husky-and-git-commits",
+  "version": "1.0.0",
+  "description": "an husky and git commit hooks example project",
+  "main": "index.ts",
+  "repository": "git@github.com:0xJamin/husky-and-git-commits.git",
+  "author": "Jamin <okpusjamin@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^18.4.3",
+    "commitlint": "^18.4.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  },
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
