@@ -1,4 +1,10 @@
-#!/usr/bin/env sh
+#!/bin/sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx --no -- commitlint --edit "$1"
+commit_msg_file=$(git rev-parse --git-dir)/COMMIT_EDITMSG
+
+# Check if the commit message matches the desired pattern
+if ! grep -qE "^\[task-[a-zA-Z0-9]+\] (build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test): " "$commit_msg_file"; then
+    echo "Aborting commit. Commit message does not match the required pattern. Your commit message should follow the pattern [task-id] type: commit message"
+    exit 1
+fi
