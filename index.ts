@@ -1,10 +1,10 @@
-// const user = "John Doe"
+const user = "John Doe"
 
 
-const me = "you";
+// const me = "you";
 
 function callUser(user) {
   console.log(user)
   return user
 }
-callUser(me);
+callUser(user);
